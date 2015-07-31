@@ -1,3 +1,14 @@
+<div data-ng-controller="appCtrl">
+    <p class="alert alert-info" data-ng-show="loading">LOADING</p>
+<div data-ng-controller="myCtrl">
+    <ul>
+        <li data-ng-repeat="person in people">
+            {{person.fname}}
+        </li>
+    </ul>
+</div>
+</div>
+
 <div data-ng-controller="cssCtrl">
         <b data-ng-class="[style1,style2]" data-ng-repeat="item in items">{{item.title}}</b>
     <hr/>

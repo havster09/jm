@@ -9,7 +9,27 @@
  */
 angular.module('jmApp')
     .controller('theCtrl',['$scope','$http',theCtrl])
-    .controller('cssCtrl',['$scope','$http',cssCtrl])
+    .controller('cssCtrl',['$scope',cssCtrl])
+    .controller('appCtrl',['$scope',appCtrl])
+    .controller('myCtrl',['$scope','$http',myCtrl])
+
+function appCtrl($scope){
+    $scope.$on('LOAD',function(){
+        $scope.loading=true;
+    });
+    $scope.$on('UNLOAD',function(){
+        $scope.loading=false;
+    });
+}
+
+function myCtrl($scope,$http){
+    $scope.$emit('LOAD');
+    $http.jsonp('http://www.filltext.com/?rows=10&fname={firstName}&delay=5&callback=JSON_CALLBACK')
+        .success(function(data){
+            $scope.people=data;
+            $scope.$emit('UNLOAD');
+        })
+}
 
 function cssCtrl($scope){
     $scope.items = [
