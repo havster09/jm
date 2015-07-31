@@ -1,0 +1,32 @@
+<div data-ng-controller="cssCtrl">
+        <b data-ng-class="[style1,style2]" data-ng-repeat="item in items">{{item.title}}</b>
+    <hr/>
+    <b data-ng-class="{'blue':item.type === 1,'red':item.type===3}" data-ng-repeat="item in items">{{item.title}}</b> <!--object notation eval to true-->
+    <hr/>
+    <b data-ng-class="{1:'blue',2:'red',3:'green'}[item.type]" data-ng-repeat="item in items">{{item.title}}</b> <!--object notation using key-->
+</div>
+
+<!--
+<div data-ng-controller="theCtrl">
+    <div class="row">
+        <select name="" id="" data-ng-model="countSelection"
+                data-ng-options="n for n in [5,10,15,25]"></select>
+        <h1>{{people[0].fname}}</h1>
+        <p>{{whenChanged}}</p>
+        <div data-ng-repeat="person in people">
+            <input type="text" data-ng-model="person.fname"/>
+        </div>
+    </div>
+</div>
+-->
+
+
+<div class="jumbotron">
+    <car model="datto" brakes wheels></car>
+    <br/>
+    <car model="rolla" wheels></car>
+</div>
+
+<div class="row marketing">
+
+</div>
