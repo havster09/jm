@@ -1,3 +1,17 @@
+<div data-ng-controller="oneCtrl as one">
+    <p>scope title: {{one.title}}</p>
+    <div data-ng-controller="twoCtrl as two">
+        scope title: {{two.title}}<br/>
+        parent title: {{one.title}}
+    </div>
+</div>
+
+<div data-ng-controller="noscopeCtrl as noscope">
+    <input type="text" data-ng-model="noscope.title" data-ng-change="noscope.incrementFromDirective()"/>
+    <p>{{changelog}}</p>
+    <p>{{noscope.changelogDirective}}</p>
+</div>
+
 <div data-ng-controller="appCtrl">
     <p class="alert alert-info" data-ng-show="loading">LOADING</p>
 <div data-ng-controller="myCtrl">
@@ -17,7 +31,6 @@
     <b data-ng-class="{1:'blue',2:'red',3:'green'}[item.type]" data-ng-repeat="item in items">{{item.title}}</b> <!--object notation using key-->
 </div>
 
-<!--
 <div data-ng-controller="theCtrl">
     <div class="row">
         <select name="" id="" data-ng-model="countSelection"
@@ -29,7 +42,6 @@
         </div>
     </div>
 </div>
--->
 
 
 <div class="jumbotron">

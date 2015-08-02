@@ -7,11 +7,42 @@
  * # MainCtrl
  * Controller of the jmApp
  */
+
 angular.module('jmApp')
     .controller('theCtrl',['$scope','$http',theCtrl])
     .controller('cssCtrl',['$scope',cssCtrl])
     .controller('appCtrl',['$scope',appCtrl])
     .controller('myCtrl',['$scope','$http',myCtrl])
+    .controller('noscopeCtrl',noscopeCtrl)
+    .controller('oneCtrl',[oneCtrl])
+    .controller('twoCtrl',[twoCtrl])
+
+function oneCtrl(){
+    this.title = "terminator"
+}
+
+function twoCtrl(){
+    this.title = "terminator 2 Judgement day"
+}
+
+
+function noscopeCtrl($scope) {
+    this.title = 'Some title';
+    this.changelogDirective = 0;
+    this.incrementFromDirective = function(){
+        this.changelogDirective++;
+    }
+    $scope.changelog = 1;
+
+    $scope.$watch(angular.bind(this, function () {
+        return this.title;
+    }),
+        function (newVal, oldVal) {
+        if(newVal){
+            $scope.changelog++;
+        }
+    });
+}
 
 function appCtrl($scope){
     $scope.$on('LOAD',function(){
@@ -24,7 +55,7 @@ function appCtrl($scope){
 
 function myCtrl($scope,$http){
     $scope.$emit('LOAD');
-    $http.jsonp('http://www.filltext.com/?rows=10&fname={firstName}&delay=5&callback=JSON_CALLBACK')
+    $http.jsonp('http://www.filltext.com/?rows=10&fname={firstName}&delay=1&callback=JSON_CALLBACK')
         .success(function(data){
             $scope.people=data;
             $scope.$emit('UNLOAD');
