@@ -1,3 +1,11 @@
+.ng-enter{
+    animation:fadeInDown 1s;
+}
+
+.ng-leave{
+    animation:fadeOutDownBig 1s;
+}
+
 .blue{color:blue}
 .red{color:red}
 .green{color:green}
