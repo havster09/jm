@@ -1,10 +1,44 @@
+input.ng-invalid.ng-dirty{
+    border:1px solid red;
+}
+
+.haserror{
+    transition:1s linear all;
+}
+
+.haserror{
+    background-color: red;
+}
+
+.haserror-add{
+    background-color: blue;
+    animation:swing 1s;
+}
+
+.haserror-remove{
+    background-color: green;
+}
+
 .ng-enter{
-    animation:fadeInDown 1s;
+    animation:fadeIn 1s;
+}
+
+.ng-enter-stagger{
+    animation-delay:.1s;
 }
 
 .ng-leave{
-    animation:fadeOutDownBig 1s;
+    animation:bounceOut 1s;
 }
+
+.ng-leave-stagger{
+    animation-delay:.1s;
+}
+
+span.ng-animate{
+    animation: bounce 1s;
+}
+
 
 .blue{color:blue}
 .red{color:red}
