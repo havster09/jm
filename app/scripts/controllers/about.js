@@ -15,7 +15,10 @@ angular.module('jmApp')
       'Karma'
     ];
   })
-    .controller("theController",['$scope','$compile',function($scope,$compile){
+    .controller("theController",['$scope','$compile','$sce',function($scope,$compile,$sce){
+        $scope.ddoTester = 'woohoo';
+        $scope.app = {};
+        $scope.app.someHtml = $sce.trustAsHtml('<a href="#" style="color:red">get f</a>');
         //example of $compile service to add new directives ng content with binding
         $scope.addVal = function(v){
             var btn = $compile('<btn val="'+v+'"></btn>')($scope);
@@ -35,8 +38,20 @@ angular.module('jmApp')
             $scope.items.splice(index,1);
         }
 
+        console.log('theController scope: ',$scope);
+
 
     }])
+    .directive("ddo",function(){
+        return{
+            restrict:"E",
+            scope:{ddoTester:"@woo"},
+            template:"<h1>{{ddoTester}}</h1>",
+            link:function(scope,el,attrs){
+                console.log('ddo scope: ',scope);
+            }
+        }
+    })
     .directive("btn",function(){
         return{
             restrict:"E",
@@ -63,3 +78,18 @@ angular.module('jmApp')
             template:'{{inner}}<br/>'
         }
     }])
+    .directive('note',function(){
+        //bindToController
+        return{
+            restrict:"E",
+            scope:{message:"@"},
+            bindToController:true,
+            controller:"NoteCtrl as note",
+            template:"<div>{{note.message}}</div>"
+        }
+    })
+    .controller('NoteCtrl',function(){
+        var note = this;
+        console.log(this);
+    })
+

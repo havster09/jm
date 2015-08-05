@@ -1,3 +1,4 @@
+<note message="sanka"></note>
 
 <m eq="1+23"></m>
 <m eq="1*3"></m>
@@ -5,6 +6,13 @@
 <m eq="1/3"></m>
 <m eq="1===23"></m>
 <div data-ng-controller="theController">
+    <ddo woo="{{ddoTester}}"></ddo>
+    <textarea name="" id="" cols="30" rows="10" data-ng-model="app.someHtml"></textarea>
+    <hr/>
+
+    <div data-ng-bind-html="app.someHtml"></div>
+
+    
     <button ng-click="addItems()">ADD</button>
     <button ng-click="clearItems()">CLEAR</button>
     <hr/>
@@ -32,6 +40,13 @@
         <span ng-show="userform.password.$dirty && userform.password.$error.required">Required</span>
         <span ng-show="userform.password.$dirty && userform.password.$error.minlength">needs to more than 3 chars</span>
         <span ng-show="userform.password.$dirty && userform.password.$error.maxlength">cannot be more than 10 chars</span>
+    </div>
+    <div>
+        <label for="test">test</label>
+        <input id="test" type="text" name="test" data-ng-model="user.test" required ng-minlength="4" ng-maxlength="10"/>
+        <span ng-show="userform.test.$dirty && userform.test.$error.required">Required</span>
+        <span ng-show="userform.test.$dirty && userform.test.$error.minlength">needs to more than 3 chars</span>
+        <span ng-show="userform.test.$dirty && userform.test.$error.maxlength">cannot be more than 10 chars</span>
     </div>
 
     <button ng-disabled="userform.$invalid">SUBMIT</button>
